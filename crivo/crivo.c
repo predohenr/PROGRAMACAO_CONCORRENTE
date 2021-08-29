@@ -60,6 +60,7 @@ int main (){
 	a = (int *) malloc (n * sizeof(int));
 	t1 = clock();
 
+#pragma omp parallel for
 	for (i = 0; i < n; i++){
 	    a[i] = eh_primo(i);
 	}
@@ -69,7 +70,7 @@ int main (){
 	    count += a[i];
 	}
 	printf("Existem %d numeros primos menores que %d\n", count, n);
-	printf("O programa demorou %.2f segundos", ((float)t2)/CLOCKS_PER_SEC);
+	printf("O programa demorou %.3f segundos", ((float)t2)/CLOCKS_PER_SEC);
 	free(a);
 	free(prime_list);
 	return 0;
